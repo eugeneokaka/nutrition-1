@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
 
   if (!token) {
-    return NextResponse.json({ user: null }, { status: 200 });
+    return NextResponse.json({ user: null }, { status: 400 });
   }
 
   try {

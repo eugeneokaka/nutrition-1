@@ -1,16 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [clientName, setClientName] = useState<string | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -44,9 +49,8 @@ export default function Navbar() {
 
         if (res.ok) {
           const data = await res.json();
-          console.log("User data:", data);
           if (data.user?.username) {
-            setClientName(data.user?.username);
+            setClientName(data.user.username);
           }
         }
       } catch (err) {
@@ -57,13 +61,55 @@ export default function Navbar() {
     verifyToken();
   }, []);
 
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setClientName(null);
+    router.push("/");
+  };
+
   const renderClientButton = () => (
-    <Button
-      className="hidden sm:inline-flex bg-gradient-to-r from-slate-600 to-slate-800 hover:from-slate-600 hover:to-slate-800 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 uppercase"
-      size="sm"
-    >
-      {clientName ? clientName.charAt(0) : "Get Started"}
-    </Button>
+    <div className="relative" ref={dropdownRef}>
+      <Button
+        onClick={toggleDropdown}
+        className="hidden sm:inline-flex bg-gradient-to-r from-slate-600 to-slate-800 text-white shadow-lg uppercase"
+        size="sm"
+      >
+        {clientName ? clientName.charAt(0) : "Get Started"}
+      </Button>
+      {dropdownOpen && (
+        <div className="absolute right-0 mt-2 w-40 bg-white shadow-md rounded-md z-50">
+          <button
+            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            onMouseDown={() => {
+              setDropdownOpen(false);
+              router.push("/create-post");
+            }}
+          >
+            Create Post
+          </button>
+          <button
+            onClick={handleLogout}
+            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+          >
+            Logout
+          </button>
+        </div>
+      )}
+    </div>
   );
 
   return (
@@ -148,12 +194,7 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="pt-4 border-t border-gray-200">
-              <Button
-                className="w-full bg-gradient-to-r from-slate-600 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white shadow-lg uppercase"
-                size="sm"
-              >
-                {clientName ? clientName.charAt(0) : "Get Started"}
-              </Button>
+              {renderClientButton()}
             </div>
           </nav>
         </div>
