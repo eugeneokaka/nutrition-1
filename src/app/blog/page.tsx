@@ -10,6 +10,7 @@ type BlogPost = {
   imageUrl: string;
   category: string;
   createdAt: string;
+  views: number;
   author: { username: string | null };
   _count: { comments: number; likes: number };
 };
@@ -33,7 +34,7 @@ export default function BlogPage() {
     return <p className="text-center mt-10">Loading blog posts...</p>;
 
   return (
-    <div className="max-w-5xl mt-20 mx-auto p-4">
+    <div className="max-w-5xl mt-30 mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Blog Posts</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {posts.map((post) => (
@@ -51,7 +52,7 @@ export default function BlogPage() {
               </p>
               <p className="mt-2 text-gray-700 line-clamp-3">{post.content}</p>
               <div className="mt-4 flex gap-4 text-sm text-gray-600">
-                <span>❤️ {post._count.likes}</span>
+                <span>👁️ {post.views}</span> {/* showing views */}
                 <span>💬 {post._count.comments}</span>
                 <span>🏷️ {post.category}</span>
               </div>

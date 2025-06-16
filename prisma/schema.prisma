@@ -44,18 +44,28 @@ model BlogPost {
   likes     Like[]
 }
 
+// model Comment {
+//   id        String     @id @default(cuid())
+//   content   String
+//   createdAt DateTime   @default(now())
+
+//   userId    String
+//   user      User       @relation(fields: [userId], references: [id])
+
+//   postId    String
+//   post      BlogPost   @relation(fields: [postId], references: [id])
+// }
 model Comment {
   id        String     @id @default(cuid())
   content   String
   createdAt DateTime   @default(now())
 
-  userId    String
-  user      User       @relation(fields: [userId], references: [id])
+  userId    String?    // Now optional for anonymous comments
+  user      User?      @relation(fields: [userId], references: [id])
 
   postId    String
   post      BlogPost   @relation(fields: [postId], references: [id])
 }
-
 model Like {
   id        String     @id @default(cuid())
   createdAt DateTime   @default(now())
