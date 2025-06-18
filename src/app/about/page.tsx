@@ -28,11 +28,11 @@ export default function AboutPage() {
           expert guidance.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <Link href="/consultation">
+          {/* <Link href="/consultation">
             <Button className="bg-green-600 hover:bg-green-700">
               Book a Consultation
             </Button>
-          </Link>
+          </Link> */}
           <Link href="/services">
             <Button variant="outline">Explore Our Services</Button>
           </Link>
@@ -71,16 +71,16 @@ export default function AboutPage() {
         </div>
         <div className="rounded-xl bg-green-50 p-8">
           <blockquote className="italic text-muted-foreground">
-            "Our mission is to empower people through nutrition education and
+            Our mission is to empower people through nutrition education and
             personalized guidance, helping them make informed choices that lead
-            to lasting health improvements and a better quality of life."
+            to lasting health improvements and a better quality of life.
           </blockquote>
           <p className="mt-4 font-medium">— Dr. Sarah Chen, Founder</p>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="mb-16">
+      {/* <section className="mb-16">
         <h2 className="mb-10 text-center text-3xl font-bold">
           Our Core Values
         </h2>
@@ -137,74 +137,9 @@ export default function AboutPage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </section> */}
 
       {/* Team Section */}
-      <section className="mb-16">
-        <h2 className="mb-10 text-center text-3xl font-bold">
-          Meet Our Expert Team
-        </h2>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Team Member 1 */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600">
-                <span className="text-xl font-bold">SC</span>
-              </div>
-              <h3 className="mb-1 text-xl font-bold">Dr. Sarah Chen</h3>
-              <p className="mb-3 text-sm text-green-600">
-                Founder & Clinical Nutritionist
-              </p>
-              <p className="text-muted-foreground">
-                Ph.D. in Nutritional Sciences with over 15 years of experience
-                in clinical nutrition and research.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Team Member 2 */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600">
-                <span className="text-xl font-bold">MR</span>
-              </div>
-              <h3 className="mb-1 text-xl font-bold">Michael Rodriguez</h3>
-              <p className="mb-3 text-sm text-green-600">
-                Registered Dietitian
-              </p>
-              <p className="text-muted-foreground">
-                Specializes in sports nutrition and metabolic health with a
-                focus on performance optimization.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Team Member 3 */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600">
-                <span className="text-xl font-bold">AJ</span>
-              </div>
-              <h3 className="mb-1 text-xl font-bold">Aisha Johnson</h3>
-              <p className="mb-3 text-sm text-green-600">
-                Health Coach & Nutritionist
-              </p>
-              <p className="text-muted-foreground">
-                Expert in behavioral change and habit formation to help clients
-                maintain healthy eating patterns.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-        <div className="mt-8 text-center">
-          <Link href="/team">
-            <Button variant="outline" className="gap-2">
-              Meet the Full Team
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
 
       {/* Credentials Section */}
       <section className="mb-16 rounded-xl bg-green-50 p-8">
@@ -230,7 +165,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="rounded-xl bg-green-600 p-12 text-white">
+      {/* <section className="rounded-xl bg-green-600 p-12 text-white">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-6 text-3xl font-bold">
             Ready to Transform Your Health?
@@ -259,7 +194,7 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

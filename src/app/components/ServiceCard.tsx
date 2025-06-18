@@ -43,7 +43,7 @@ export function ServiceCard({
         {features.length > 0 && (
           <div className="space-y-2">
             <h4 className="font-semibold text-gray-800 text-sm uppercase tracking-wide">
-              What's Included:
+              What&apos;s Included:
             </h4>
             <ul className="space-y-2">
               {features.map((feature, idx) => (
