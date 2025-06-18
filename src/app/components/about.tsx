@@ -7,7 +7,7 @@ function page() {
       {/* {hero} */}
       <div className="w-3/4 mx-auto   sm:mt-40 ">
         <h1 className="text-3xl font-bold text-center my-20 md:text-5xl ">
-          We're on a mission to imporve lives through nutriton
+          We are on a mission to imporve lives through nutriton
         </h1>
         <p className="text-gray-500 text-center text-lg my-20 md:text-xl">
           founded in 2015 ,oasis has been helping thousands of peaple achive
