@@ -27,6 +27,8 @@ export async function GET(
             id: true,
             content: true,
             createdAt: true,
+          
+            
             user: { select: { username: true } },
           },
           orderBy: { createdAt: "desc" },

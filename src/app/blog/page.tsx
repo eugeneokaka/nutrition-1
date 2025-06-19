@@ -21,7 +21,7 @@ export default function BlogPage() {
 
   useEffect(() => {
     async function fetchPosts() {
-      const res = await fetch("/api/posts");
+      const res = await fetch("/api/posts", { cache: "no-store" });
       const data = await res.json();
       setPosts(data);
       setLoading(false);

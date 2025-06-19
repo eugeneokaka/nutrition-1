@@ -85,7 +85,7 @@ export default function Navbar() {
     <div className="relative" ref={dropdownRef}>
       <Button
         onClick={toggleDropdown}
-        className="hidden sm:inline-flex bg-gradient-to-r from-slate-600 to-slate-800 text-white shadow-lg uppercase"
+        className="inline-flex bg-gradient-to-r from-slate-600 to-slate-800 text-white shadow-lg uppercase"
         size="sm"
       >
         {clientName ? clientName.charAt(0) : "Get Started"}
